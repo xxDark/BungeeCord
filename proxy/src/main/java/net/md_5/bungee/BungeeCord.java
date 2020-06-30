@@ -344,7 +344,7 @@ public class BungeeCord extends ProxyServer
                 }
             };
             new ServerBootstrap()
-                    .channel( PipelineUtils.getServerChannel( info.getSocketAddress() ) )
+                    .channelFactory( PipelineUtils.getServerChannelFactory( info.getSocketAddress() ) )
                     .option( ChannelOption.SO_REUSEADDR, true ) // TODO: Move this elsewhere!
                     .childAttr( PipelineUtils.LISTENER, info )
                     .childHandler( PipelineUtils.SERVER_CHILD )
@@ -371,7 +371,7 @@ public class BungeeCord extends ProxyServer
                         }
                     }
                 };
-                new RemoteQuery( this, info ).start( PipelineUtils.getDatagramChannel(), new InetSocketAddress( info.getHost().getAddress(), info.getQueryPort() ), eventLoops, bindListener );
+                new RemoteQuery( this, info ).start( PipelineUtils.getDatagramChannelFactory(), new InetSocketAddress( info.getHost().getAddress(), info.getQueryPort() ), eventLoops, bindListener );
             }
         }
     }
