@@ -1,6 +1,8 @@
 package net.md_5.bungee.protocol;
 
-public class OverflowPacketException extends RuntimeException
+import net.md_5.bungee.util.QuietException;
+
+public class OverflowPacketException extends QuietException
 {
 
     public OverflowPacketException(String message)

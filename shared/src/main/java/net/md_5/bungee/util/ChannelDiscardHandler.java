@@ -28,4 +28,9 @@ final class ChannelDiscardHandler extends ChannelOutboundHandlerAdapter
     public void flush(ChannelHandlerContext ctx) throws Exception
     {
     }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception
+    {
+    }
 }

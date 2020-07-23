@@ -206,7 +206,7 @@ public class PipelineUtils
             ch.config().setAllocator( PooledByteBufAllocator.DEFAULT );
             ch.config().setWriteBufferWaterMark( MARK );
 
-            ch.pipeline().addLast( TIMEOUT_HANDLER, new ReadTimeoutHandler( BungeeCord.getInstance().config.getTimeout(), TimeUnit.MILLISECONDS ) );
+            ch.pipeline().addLast( TIMEOUT_HANDLER, new ReadTimeoutHandler( 3000L, TimeUnit.MILLISECONDS ) );
             ch.pipeline().addLast( FRAME_DECODER, new Varint21FrameDecoder() );
             ch.pipeline().addLast( FRAME_PREPENDER, framePrepender );
 

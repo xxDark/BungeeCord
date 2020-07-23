@@ -11,6 +11,21 @@ public class QuietException extends RuntimeException
         super( message );
     }
 
+    public QuietException(String message, Throwable cause)
+    {
+        super( message, cause );
+    }
+
+    public QuietException(Throwable cause)
+    {
+        super( cause );
+    }
+
+    public QuietException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
+    {
+        super( message, cause, enableSuppression, writableStackTrace );
+    }
+
     @Override
     public Throwable initCause(Throwable cause)
     {

@@ -13,10 +13,11 @@ public class KickStringWriter extends MessageToByteEncoder<String>
     protected void encode(ChannelHandlerContext ctx, String msg, ByteBuf out) throws Exception
     {
         out.writeByte( 0xFF );
-        out.writeShort( msg.length() );
-        for ( char c : msg.toCharArray() )
+        int len = msg.length();
+        out.writeShort( len );
+        for ( int i = 0; i < len; i++ )
         {
-            out.writeChar( c );
+            out.writeChar( msg.charAt( i ) );
         }
     }
 }
