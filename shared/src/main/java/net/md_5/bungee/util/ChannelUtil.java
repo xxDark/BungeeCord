@@ -12,8 +12,14 @@ public class ChannelUtil
     private final String DISCARD_HANDLER = "discard";
 
     @SneakyThrows
-    public void shutdownChannel(Channel channel, Throwable t)
+    public void shutdownChannel(Channel channel, Throwable t, boolean closeForcibly)
     {
+        if ( closeForcibly )
+        {
+            channel.unsafe().closeForcibly();
+            return;
+        }
+
         val pipeline = channel.pipeline();
         if ( pipeline.first() != ChannelDiscardHandler.INSTANCE )
         {
@@ -25,5 +31,10 @@ public class ChannelUtil
                 throw t;
             }
         }
+    }
+
+    public void shutdownChannel(Channel channel, Throwable t)
+    {
+        shutdownChannel( channel, t, false );
     }
 }

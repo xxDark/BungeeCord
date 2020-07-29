@@ -63,7 +63,7 @@ public class PipelineUtils
 
             if ( BungeeCord.getInstance().getConnectionThrottle() != null && BungeeCord.getInstance().getConnectionThrottle().throttle( remoteAddress ) )
             {
-                ChannelUtil.shutdownChannel( ch, null );
+                ChannelUtil.shutdownChannel( ch, null, true );
                 return;
             }
 
