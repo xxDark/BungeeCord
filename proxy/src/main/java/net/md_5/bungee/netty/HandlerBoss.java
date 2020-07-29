@@ -10,7 +10,6 @@ import io.netty.handler.timeout.ReadTimeoutException;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.logging.Level;
-import lombok.Setter;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.connection.CancelSendSignal;
 import net.md_5.bungee.connection.InitialHandler;
@@ -19,7 +18,6 @@ import net.md_5.bungee.error.Errors;
 import net.md_5.bungee.protocol.BadPacketException;
 import net.md_5.bungee.protocol.OverflowPacketException;
 import net.md_5.bungee.protocol.PacketWrapper;
-import net.md_5.bungee.protocol.Protocol;
 import net.md_5.bungee.util.ChannelUtil;
 import net.md_5.bungee.util.QuietException;
 
@@ -35,8 +33,6 @@ public class HandlerBoss extends ChannelInboundHandlerAdapter
 
     private ChannelWrapper channel;
     private PacketHandler handler;
-    @Setter
-    private Protocol protocol;
 
     public void setHandler(PacketHandler handler)
     {
