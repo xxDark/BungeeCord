@@ -1,6 +1,7 @@
 package net.md_5.bungee.util;
 
 import io.netty.channel.Channel;
+import io.netty.handler.codec.ByteToMessageDecoder;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import lombok.val;
@@ -25,6 +26,7 @@ public class ChannelUtil
         {
             channel.config().setAutoRead( false );
             pipeline.addFirst( DISCARD_HANDLER, ChannelDiscardHandler.INSTANCE );
+            (  ( ByteToMessageDecoder ) pipeline.get( "frame-decoder" ) ).setSingleDecode( true );
             channel.close();
             if ( Errors.isDebug() && t != null )
             {

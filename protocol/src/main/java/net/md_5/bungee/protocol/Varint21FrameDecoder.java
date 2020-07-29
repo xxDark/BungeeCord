@@ -31,8 +31,8 @@ public class Varint21FrameDecoder extends ByteToMessageDecoder
 
                 if ( packetLength <= 0 )
                 {
-                    super.setSingleDecode( true );
-                    ctx.fireExceptionCaught( Errors.emptyPacket() );
+                    setSingleDecode( true );
+                    Errors.emptyPacket();
                     return;
                 }
 
@@ -46,7 +46,7 @@ public class Varint21FrameDecoder extends ByteToMessageDecoder
             }
         }
 
-        super.setSingleDecode( true );
-        ctx.fireExceptionCaught( Errors.badFrameLength() );
+        setSingleDecode( true );
+        Errors.badFrameLength();
     }
 }
