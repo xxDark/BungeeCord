@@ -54,22 +54,22 @@ public class Errors
         throw UNEXPECTED_BUFFER_END;
     }
 
-    public void badFrameLength()
+    public Exception badFrameLength()
     {
         if ( DEBUG )
         {
-            throw new CorruptedFrameException( "length wider than 21-bit" );
+            return new CorruptedFrameException( "length wider than 21-bit" );
         }
-        throw BAD_FRAME_LENGTH;
+        return BAD_FRAME_LENGTH;
     }
 
-    public void emptyPacket()
+    public Exception emptyPacket()
     {
         if ( DEBUG )
         {
-            throw new CorruptedFrameException( "Empty Packet!" );
+            return new CorruptedFrameException( "Empty Packet!" );
         }
-        throw EMPTY_PACKET;
+        return EMPTY_PACKET;
     }
 
     public Exception discard()
