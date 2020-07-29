@@ -196,13 +196,7 @@ public class PipelineUtils
         @Override
         public void initChannel(Channel ch) throws Exception
         {
-            try
-            {
-                ch.config().setOption( ChannelOption.IP_TOS, 0x18 );
-            } catch ( ChannelException ex )
-            {
-                // IP_TOS is not supported (Windows XP / Windows Server 2003)
-            }
+            ch.config().setOption( ChannelOption.IP_TOS, 0x18 );
             ch.config().setAllocator( PooledByteBufAllocator.DEFAULT );
             ch.config().setWriteBufferWaterMark( MARK );
 
