@@ -38,7 +38,6 @@ public class PacketCompressor extends MessageToByteEncoder<ByteBuf>
         } else
         {
             DefinedPacket.writeVarInt( origSize, out );
-
             zlib.process( msg, out );
         }
     }

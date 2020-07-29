@@ -11,7 +11,7 @@ import javax.crypto.spec.IvParameterSpec;
 public class JavaCipher implements BungeeCipher
 {
 
-    private final Cipher cipher;
+    private Cipher cipher;
     private static final ThreadLocal<byte[]> heapInLocal = new EmptyByteThreadLocal();
     private static final ThreadLocal<byte[]> heapOutLocal = new EmptyByteThreadLocal();
 
@@ -25,14 +25,10 @@ public class JavaCipher implements BungeeCipher
         }
     }
 
-    public JavaCipher() throws GeneralSecurityException
-    {
-        this.cipher = Cipher.getInstance( "AES/CFB8/NoPadding" );
-    }
-
     @Override
     public void init(boolean forEncryption, SecretKey key) throws GeneralSecurityException
     {
+        Cipher cipher = this.cipher = Cipher.getInstance( "AES/CFB8/NoPadding" );
         int mode = forEncryption ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE;
         cipher.init( mode, key, new IvParameterSpec( key.getEncoded() ) );
     }
