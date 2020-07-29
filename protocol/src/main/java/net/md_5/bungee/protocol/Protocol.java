@@ -458,6 +458,7 @@ public enum Protocol
             try
             {
                 Constructor<? extends DefinedPacket> constructor = packetClass.getDeclaredConstructor();
+                constructor.setAccessible( true );
 
                 int mappingIndex = 0;
                 ProtocolMapping mapping = mappings[mappingIndex];
