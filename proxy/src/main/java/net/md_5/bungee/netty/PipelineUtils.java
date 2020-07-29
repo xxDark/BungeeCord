@@ -71,7 +71,7 @@ public class PipelineUtils
 
             if ( BungeeCord.getInstance().getPluginManager().callEvent( new ClientConnectEvent( remoteAddress, listener ) ).isCancelled() )
             {
-                ch.close();
+                ChannelUtil.shutdownChannel( ch, null, true );
                 return;
             }
 
