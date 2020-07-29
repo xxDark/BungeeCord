@@ -15,7 +15,7 @@ public class ChannelUtil
     public void shutdownChannel(Channel channel, Throwable t)
     {
         val pipeline = channel.pipeline();
-        if ( pipeline.get( DISCARD_HANDLER ) == null )
+        if ( pipeline.first() != ChannelDiscardHandler.INSTANCE )
         {
             channel.config().setAutoRead( false );
             pipeline.addFirst( DISCARD_HANDLER, ChannelDiscardHandler.INSTANCE );
