@@ -41,7 +41,6 @@ public class ChannelWrapper
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.get( MinecraftDecoder.class ).setProtocol( protocol );
         pipeline.get( MinecraftEncoder.class ).setProtocol( protocol );
-        pipeline.get( HandlerBoss.class ).setProtocol( protocol );
     }
 
     public void setVersion(int protocol)
